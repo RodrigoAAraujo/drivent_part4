@@ -11,7 +11,7 @@ export async function getEnrollmentByUser(req: AuthenticatedRequest, res: Respon
 
     return res.status(httpStatus.OK).send(enrollmentWithAddress);
   } catch (error) {
-    return res.sendStatus(httpStatus.NO_CONTENT);
+    return res.sendStatus(httpStatus.NOT_FOUND);
   }
 }
 
@@ -36,7 +36,7 @@ export async function getAddressFromCEP(req: AuthenticatedRequest, res: Response
     return res.status(httpStatus.OK).send(address);
   } catch (error) {
     if (error.name === "NotFoundError") {
-      return res.sendStatus(httpStatus.NO_CONTENT);
+      return res.sendStatus(httpStatus.NOT_FOUND);
     }
   }
 }
